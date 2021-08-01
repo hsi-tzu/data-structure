@@ -5,8 +5,8 @@
 struct tree                       /* 樹的結構宣告       */
 {
    int data;                      /* 節點資料           */
-   struct tree *left;             /* 指向左子樹的指標   */
-   struct tree *right;            /* 指向右子樹的指標   */
+   tree *left;             /* 指向左子樹的指標   */
+   tree *right;            /* 指向右子樹的指標   */
 };
 typedef struct tree treenode;     /* 樹的結構新型態     */
 typedef treenode *btree;          /* 宣告樹節點指標型態 */
@@ -42,6 +42,8 @@ btree insert_node(btree root,int value)
             current = current->right;    /* 右子樹      */
       }
       if ( back->data > value )   /* 接起父子的鏈結     */
+
+      
          back->left = newnode;    /* 左子樹             */
       else
          back->right = newnode;   /* 右子樹             */
