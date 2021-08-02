@@ -9,21 +9,22 @@ class binary_tree
         node *left;
         node *right;
     };
+    
+    public:
     node *root;
     node *current; /* 目前樹節點指標     */
     node *back;    /* 父節點指標         */
-    
-    public:
+ 
     binary_tree();
     void insert(int);
-    void inorder();
+    void inorder(node *order);
 };
- binary_tree::binary_tree()
+binary_tree::binary_tree()
  {
      root=current=back=NULL;
  }
 
- void binary_tree::insert(int n)
+void binary_tree::insert(int n)
  {
      node *temp=new node;
      temp->data=n;
@@ -55,10 +56,25 @@ class binary_tree
         }
      }
  }
+void binary_tree::inorder(node *order)
+{   
+    if(order != NULL)   
+    {
+        inorder(order->left);
+        cout<<order->data<<endl;
+        inorder(order->right);
+    }
 
+}
  int main()
  {
      binary_tree test;
+     test.insert(10);
      test.insert(5);
+     test.insert(21);
+     test.insert(9);
+     test.insert(13);
+     test.insert(28);
+     test.inorder(test.root);
 
  }
